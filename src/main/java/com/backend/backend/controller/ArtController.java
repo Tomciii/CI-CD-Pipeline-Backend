@@ -17,7 +17,7 @@ public class ArtController implements PublicApi {
     }
 
     @Override
-    public ResponseEntity publicApiGetItemData() {
-        return ResponseEntity.ok("Hello World");
+    public ResponseEntity getAllArt() {
+        return ResponseEntity.ok(this.service.getAllArt().toString());
     }
 }

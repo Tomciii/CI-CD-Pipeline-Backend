@@ -12,8 +12,8 @@ public interface PublicApi {
 
     @RequestMapping(
             method = RequestMethod.GET,
-            value = "/public/api/getdb",
+            value = "/public/api/getAllArt",
             produces = {"application/json"}
     )
-    ResponseEntity publicApiGetItemData();
+    ResponseEntity getAllArt();
 }
