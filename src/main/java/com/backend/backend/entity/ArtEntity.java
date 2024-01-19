@@ -32,10 +32,7 @@ public class ArtEntity {
 
     @Override
     public String toString() {
-        return "{" +
-                "imageURL='" + imageURL + '\'' +
-                ", name='" + name + '\'' +
-                ", text='" + text + '\'' +
-                '}';
+        return String.format("{\"id\": \"%s\",\"imageURL\": \"%s\", \"name\": \"%s\", \"text\": \"%s\"}",
+                this.id, this.imageURL, this.name, this.text);
     }
 }
