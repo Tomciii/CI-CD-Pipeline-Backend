@@ -22,6 +22,14 @@ public class ArtService {
     }
 
     public ArtEntity save(ArtEntity entity){
-        return this.repository.save(entity);
+        return this.repository.save(this.toNewEntity(entity));
+    }
+
+    private ArtEntity toNewEntity(ArtEntity entity) {
+        ArtEntity newEntity = new ArtEntity();
+        newEntity.setName(entity.getName());
+        newEntity.setText(entity.getText());
+        newEntity.setImageURL(entity.getImageURL());
+        return newEntity;
     }
 }

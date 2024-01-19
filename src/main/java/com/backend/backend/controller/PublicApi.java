@@ -17,7 +17,7 @@ public interface PublicApi {
 
     @CrossOrigin(origins = "*")
     @PostMapping(
-            value = "/public/api/getAllArt",
+            value = "/public/api/save",
             produces = {"application/json"}
     )
     ResponseEntity save(@RequestBody ArtEntity art);
