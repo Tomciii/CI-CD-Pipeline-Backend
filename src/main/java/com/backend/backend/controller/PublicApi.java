@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
-@CrossOrigin(origins = "http://127.0.0.1/")
+@CrossOrigin(origins = "*")
 public interface PublicApi {
 
     @GetMapping(
