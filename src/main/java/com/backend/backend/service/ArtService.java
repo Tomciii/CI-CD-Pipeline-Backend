@@ -18,7 +18,7 @@ public class ArtService {
     }
 
     public List<ArtEntity> getAllArt(){
-        return List.of(new ArtEntity(1,"url","text","text"),new ArtEntity(2,"url","text","text"));
+        return this.repository.findAll();
     }
 
     public ArtEntity save(ArtEntity entity){
