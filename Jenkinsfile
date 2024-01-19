@@ -18,17 +18,19 @@ pipeline {
                 }
             }
         }
+
+         stage('Send Mail') {
+                                steps {
+                                    script {
+                                                   mail to: 'Tomciiart@gmail.com',
+                                                       subject: "Jenkins Job ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
+                                                       body: "The Jenkins job has completed.\n\nCheck the build at ${env.BUILD_URL}"
+                                                }
+                                }
+                            }
     }
 
-            stage('Send Mail') {
-                        steps {
-                            script {
-                                           mail to: 'Tomciiart@gmail.com',
-                                               subject: "Jenkins Job ${env.JOB_NAME} - Build #${env.BUILD_NUMBER}",
-                                               body: "The Jenkins job has completed.\n\nCheck the build at ${env.BUILD_URL}"
-                                        }
-                        }
-                    }
+
 
     post {
         success {
