@@ -1,19 +1,22 @@
 package com.backend.backend.controller;
 
+import com.backend.backend.entity.ArtEntity;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin(origins = "http://127.0.0.1/")
 public interface PublicApi {
 
-    @RequestMapping(
-            method = RequestMethod.GET,
+    @GetMapping(
             value = "/public/api/getAllArt",
             produces = {"application/json"}
     )
     ResponseEntity getAllArt();
+
+    @PostMapping(
+            value = "/public/api/getAllArt",
+            produces = {"application/json"}
+    )
+    ResponseEntity save(@RequestBody ArtEntity art);
 }

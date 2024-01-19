@@ -1,9 +1,12 @@
 package com.backend.backend.controller;
 
 
+import com.backend.backend.entity.ArtEntity;
 import com.backend.backend.service.ArtService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 
 
 @org.springframework.stereotype.Controller
@@ -18,6 +21,19 @@ public class ArtController implements PublicApi {
 
     @Override
     public ResponseEntity getAllArt() {
-        return ResponseEntity.ok(this.service.getAllArt().toString());
+        try {
+            return ResponseEntity.ok(this.service.getAllArt().toString());
+        } catch (Exception e){
+            return new ResponseEntity<>("Error loading art: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Override
+    public ResponseEntity save(@RequestBody ArtEntity art) {
+        try {
+            return ResponseEntity.ok(this.service.save(art));
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error saving art: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 }
