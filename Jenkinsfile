@@ -36,10 +36,10 @@ pipeline {
 
     post {
         success {
-            echo 'Build succeeded. Add post-build actions here if needed.'
+            echo 'Build succeeded.'
         }
         failure {
-            echo 'Build failed. Add post-build actions here if needed.'
+            echo 'Build failed. '
         }
     }
 }
