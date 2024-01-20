@@ -24,5 +24,5 @@ public interface PublicApi {
             value = "/delete",
             produces = {"application/json"}
     )
-    ResponseEntity delete(@RequestBody ArtEntity art);
+    ResponseEntity delete(@RequestBody int index);
 }

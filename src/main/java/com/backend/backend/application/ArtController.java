@@ -22,7 +22,7 @@ public class ArtController implements PublicApi {
     @Override
     public ResponseEntity getAllArt() {
         try {
-            return ResponseEntity.ok(this.service.getAllArt().toString());
+            return ResponseEntity.ok(this.service.findAll().toString());
         } catch (Exception e){
             return new ResponseEntity<>("Error loading art: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -38,9 +38,9 @@ public class ArtController implements PublicApi {
     }
 
     @Override
-    public ResponseEntity delete(ArtEntity art) {
+    public ResponseEntity delete(int index) {
         try {
-            this.service.delete(art);
+            this.service.delete(index);
             return (ResponseEntity) ResponseEntity.ok();
         } catch (Exception e) {
             return new ResponseEntity<>("Error deleting art: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);

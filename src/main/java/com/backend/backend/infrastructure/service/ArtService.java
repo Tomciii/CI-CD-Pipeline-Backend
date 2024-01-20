@@ -19,7 +19,7 @@ public class ArtService implements IArtService {
     }
 
     @Override
-    public List<ArtEntity> getAllArt(){
+    public List<ArtEntity> findAll(){
         return this.repository.findAll();
     }
 
@@ -29,7 +29,7 @@ public class ArtService implements IArtService {
     }
 
     @Override
-    public void delete(ArtEntity entity) {
-         this.repository.delete(entity);
+    public void delete(int index) {
+         this.repository.deleteById(index);
     }
 }
