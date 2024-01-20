@@ -9,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController(value = "${endpoint}")
+@RestController("/public/api")
 public class ArtController implements PublicApi {
 
     private IArtService service;
