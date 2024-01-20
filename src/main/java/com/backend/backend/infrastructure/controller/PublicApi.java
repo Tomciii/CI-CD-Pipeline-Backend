@@ -9,19 +9,19 @@ import org.springframework.web.bind.annotation.*;
 public interface PublicApi {
 
     @GetMapping(
-            value = "/getAllArt",
+            value = "/public/api/getAllArt",
             produces = {"application/json"}
     )
     ResponseEntity getAllArt();
 
     @PostMapping(
-            value = "/save",
+            value = "/public/api/save",
             produces = {"application/json"}
     )
     ResponseEntity save(@RequestBody ArtEntity art);
 
     @PostMapping(
-            value = "/delete",
+            value = "/public/api/delete",
             produces = {"application/json"}
     )
     ResponseEntity delete(@RequestBody int index);
