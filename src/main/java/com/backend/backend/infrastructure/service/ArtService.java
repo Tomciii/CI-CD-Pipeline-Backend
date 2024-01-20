@@ -18,19 +18,18 @@ public class ArtService implements IArtService {
         this.repository = repository;
     }
 
+    @Override
     public List<ArtEntity> getAllArt(){
         return this.repository.findAll();
     }
 
+    @Override
     public ArtEntity save(ArtEntity entity){
-        return this.repository.save(this.toNewEntity(entity));
+        return this.repository.save(new ArtEntity(entity.getImageURL(), entity.getName(), entity.getText()));
     }
 
-    private ArtEntity toNewEntity(ArtEntity entity) {
-        ArtEntity newEntity = new ArtEntity();
-        newEntity.setName(entity.getName());
-        newEntity.setText(entity.getText());
-        newEntity.setImageURL(entity.getImageURL());
-        return newEntity;
+    @Override
+    public void delete(ArtEntity entity) {
+         this.repository.delete(entity);
     }
 }

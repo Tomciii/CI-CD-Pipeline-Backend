@@ -9,8 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-
-@RestController()
+@RestController(value = "${endpoint}")
 public class ArtController implements PublicApi {
 
     private IArtService service;
@@ -35,6 +34,16 @@ public class ArtController implements PublicApi {
             return ResponseEntity.ok(this.service.save(art));
         } catch (Exception e) {
             return new ResponseEntity<>("Error saving art: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    @Override
+    public ResponseEntity delete(ArtEntity art) {
+        try {
+            this.service.delete(art);
+            return (ResponseEntity) ResponseEntity.ok();
+        } catch (Exception e) {
+            return new ResponseEntity<>("Error deleting art: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 }

@@ -19,8 +19,7 @@ public class ArtEntity {
     @Column(name="TEXT")
     private String text;
 
-    public ArtEntity(int id, String imageURL, String name, String text) {
-        this.id = id;
+    public ArtEntity( String imageURL, String name, String text) {
         this.imageURL = imageURL;
         this.name = name;
         this.text = text;

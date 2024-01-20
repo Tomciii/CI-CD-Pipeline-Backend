@@ -8,17 +8,21 @@ import org.springframework.web.bind.annotation.*;
 @CrossOrigin(origins = "*")
 public interface PublicApi {
 
-    @CrossOrigin(origins = "*")
     @GetMapping(
-            value = "/public/api/getAllArt",
+            value = "/getAllArt",
             produces = {"application/json"}
     )
     ResponseEntity getAllArt();
 
-    @CrossOrigin(origins = "*")
     @PostMapping(
-            value = "/public/api/save",
+            value = "/save",
             produces = {"application/json"}
     )
     ResponseEntity save(@RequestBody ArtEntity art);
+
+    @PostMapping(
+            value = "/delete",
+            produces = {"application/json"}
+    )
+    ResponseEntity delete(@RequestBody ArtEntity art);
 }
