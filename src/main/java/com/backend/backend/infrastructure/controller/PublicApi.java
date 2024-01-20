@@ -1,6 +1,6 @@
-package com.backend.backend.controller;
+package com.backend.backend.infrastructure.controller;
 
-import com.backend.backend.entity.ArtEntity;
+import com.backend.backend.infrastructure.entity.ArtEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

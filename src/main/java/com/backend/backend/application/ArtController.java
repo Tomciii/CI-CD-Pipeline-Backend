@@ -1,8 +1,8 @@
-package com.backend.backend.controller;
+package com.backend.backend.application;
 
 
-import com.backend.backend.entity.ArtEntity;
-import com.backend.backend.service.ArtService;
+import com.backend.backend.infrastructure.controller.PublicApi;
+import com.backend.backend.infrastructure.entity.ArtEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 
-@RestController
+@RestController()
 public class ArtController implements PublicApi {
 
-    private ArtService service;
+    private IArtService service;
 
     @Autowired
-    public ArtController(ArtService artService) {
+    public ArtController(IArtService artService) {
         this.service = artService;
     }
 

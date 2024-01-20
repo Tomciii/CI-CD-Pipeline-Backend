@@ -1,14 +1,15 @@
-package com.backend.backend.service;
+package com.backend.backend.infrastructure.service;
 
-import com.backend.backend.entity.ArtEntity;
-import com.backend.backend.repository.ArtRepository;
+import com.backend.backend.application.IArtService;
+import com.backend.backend.infrastructure.entity.ArtEntity;
+import com.backend.backend.infrastructure.repository.ArtRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class ArtService {
+public class ArtService implements IArtService {
 
     private ArtRepository repository;
 
