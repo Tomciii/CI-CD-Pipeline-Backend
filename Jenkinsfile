@@ -25,6 +25,15 @@ pipeline {
                             } else {
                            //     echo "API Endpoint ${apiUrl} did not return a successful response. Starting Tomcat..."
                                 echo "Tomcat not started."
+
+                                  try {
+                                            mail to: 'Tomciiart@gmail.com',
+                                            subject: "Jenkins Job ${env.JOB_NAME} - Tomcat Server Not Running",
+                                            body: "The Tomcat Server is not up and running. \n\nCheck the build at ${env.BUILD_URL}"
+                                                 } catch(Exception e) {
+                                                    echo 'Could not send out mail'
+                                            }
+
                               // sh(script: "\"${env.CATALINA_HOME}/bin/startup.bat\" &", background: true)
 
                              //   echo "Tomcat started successfully."
