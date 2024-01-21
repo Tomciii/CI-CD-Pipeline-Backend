@@ -19,7 +19,7 @@ pipeline {
                             } else {
                                 echo "API Endpoint ${apiUrl} did not return a successful response. Starting Tomcat..."
 
-                                sh(script: "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\bin\\startup.bat")
+                                sh(script: "C:/Program Files/Apache Software Foundation/Tomcat 10.1/bin/startup.bat")
 
                                 echo "Tomcat started successfully."
                             }
