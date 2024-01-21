@@ -1,5 +1,11 @@
 pipeline {
     agent any
+
+    environment {
+            CATALINA_HOME = 'C:/Program Files/Apache Software Foundation/Tomcat 10.1'
+        }
+
+
     stages {
         stage('Checkout') {
             steps {
@@ -19,7 +25,7 @@ pipeline {
                             } else {
                                 echo "API Endpoint ${apiUrl} did not return a successful response. Starting Tomcat..."
 
-                                sh(script: "\"C:/Program Files/Apache Software Foundation/Tomcat 10.1/bin/startup.bat\"")
+                                 sh(script: "set CATALINA_HOME=${env.CATALINA_HOME} && \"${env.CATALINA_HOME}/bin/startup.bat\"")
 
                                 echo "Tomcat started successfully."
                             }
