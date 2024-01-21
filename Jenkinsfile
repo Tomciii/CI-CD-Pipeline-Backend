@@ -23,15 +23,17 @@ pipeline {
                             if (response == 0) {
                                 echo "API Endpoint ${apiUrl} returned a successful response."
                             } else {
-                                echo "API Endpoint ${apiUrl} did not return a successful response. Starting Tomcat..."
+                           //     echo "API Endpoint ${apiUrl} did not return a successful response. Starting Tomcat..."
+                                echo "Tomcat not started."
+                              // sh(script: "\"${env.CATALINA_HOME}/bin/startup.bat\" &", background: true)
 
-                               sh(script: "\"${env.CATALINA_HOME}/bin/startup.bat\" &", background: true)
-
-                                echo "Tomcat started successfully."
+                             //   echo "Tomcat started successfully."
                             }
                         }
                     }
             }
+
+
         stage('Build') {
             steps {
                 script {
