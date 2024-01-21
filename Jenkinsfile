@@ -25,7 +25,7 @@ pipeline {
                             } else {
                                 echo "API Endpoint ${apiUrl} did not return a successful response. Starting Tomcat..."
 
-                                 sh(script: "nohup ${env.CATALINA_HOME}/bin/startup.sh &", background: true)
+                               sh(script: "\"${env.CATALINA_HOME}/bin/startup.sh\" &", background: true)
 
                                 echo "Tomcat started successfully."
                             }
