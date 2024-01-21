@@ -13,7 +13,7 @@ pipeline {
             }
         }
 
-        stage('Start Tomcat') {
+        stage('Checking Tomcat') {
          steps {
                         script {
                             def apiUrl = 'http://localhost:8085/application/public/api/getAllArt'
