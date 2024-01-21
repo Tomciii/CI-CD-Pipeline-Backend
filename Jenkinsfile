@@ -7,6 +7,25 @@ pipeline {
             }
         }
 
+        stage('Start Tomcat') {
+         steps {
+                        script {
+                            def apiUrl = 'http://localhost:8085/application/public/api/getAllArt'
+
+                            def response = sh(script: "curl -sS ${apiUrl}", returnStatus: true)
+
+                            if (response == 0) {
+                                echo "API Endpoint ${apiUrl} returned a successful response."
+                            } else {
+                                echo "API Endpoint ${apiUrl} did not return a successful response. Starting Tomcat..."
+
+                                sh(script: "C:\\Program Files\\Apache Software Foundation\\Tomcat 10.1\\bin\\startup.bat")
+
+                                echo "Tomcat started successfully."
+                            }
+                        }
+                    }
+            }
         stage('Build') {
             steps {
                 script {
