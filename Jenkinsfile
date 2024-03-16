@@ -12,39 +12,41 @@ pipeline {
             }
         }
 
-        stage('Checking Tomcat') {
-         steps {
-           script {
-               def apiUrl = 'http://localhost:8085/application/public/api/getAllArt'
 
-               def response = sh(script: "curl -sS ${apiUrl}", returnStatus: true)
+            stage('Check Tomcat / Build') {
+              steps {
+                parallel(
+                  a: {
+                   script {
+                                  def apiUrl = 'http://localhost:8085/application/public/api/getAllArt'
 
-               if (response == 0) {
-                   echo "API Endpoint ${apiUrl} returned a successful response."
-               } else {
-                   echo "Tomcat not started."
+                                  def response = sh(script: "curl -sS ${apiUrl}", returnStatus: true)
 
-                     try {
-                       mail to: 'Tomciiart@gmail.com',
-                       subject: "Jenkins Job ${env.JOB_NAME} - Tomcat Server Not Running",
-                       body: "The Tomcat Server is not up and running. \n\nCheck the build at ${env.BUILD_URL}"
-                         } catch(Exception e) {
-                               echo 'Could not send out mail'
-                               }
+                                  if (response == 0) {
+                                      echo "API Endpoint ${apiUrl} returned a successful response."
+                                  } else {
+                                      echo "Tomcat not started."
 
-                            }
-                        }
-                    }
+                                        try {
+                                          mail to: 'Tomciiart@gmail.com',
+                                          subject: "Jenkins Job ${env.JOB_NAME} - Tomcat Server Not Running",
+                                          body: "The Tomcat Server is not up and running. \n\nCheck the build at ${env.BUILD_URL}"
+                                            } catch(Exception e) {
+                                                  echo 'Could not send out mail'
+                                                  }
+
+                                               }
+                                           }
+                  },
+                  b: {
+                   script {
+                                   echo 'Starting Build'
+                                      sh "mvn clean compile"
+                                   }
+                  }
+                )
+              }
             }
-
-        stage('Build') {
-            steps {
-                script {
-                echo 'Starting Build'
-                    sh "mvn clean compile"
-                }
-            }
-        }
 
          stage('Send Mail') {
             steps {
